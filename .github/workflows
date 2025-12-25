@@ -1,9 +1,23 @@
-on push:
-    branches:
-        - main
-        - develop
-    paths:
-        - '.github/workflows/**'
-        - 'src/**'
-        - 'tests/**'
-      
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js 
+      uses: actions/setup-node@v4
+    - run: cd devops-azure
+    - run: npm install
+    - run: npm run build --if-present
+    - run: npm test
