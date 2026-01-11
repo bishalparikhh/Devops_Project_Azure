@@ -16,7 +16,7 @@ jobs:
 
     - name: Npm install
       run : npm install 
-      working-directory: ./
+      working-directory: ./devops-azure
 
     - name: Npm build
       run : npm run build
