@@ -16,15 +16,15 @@ jobs:
 
     - name: Npm install
       run : npm install 
-      working-directory: ./azure-devops
+      working-directory: ./
 
     - name: Npm build
       run : npm run build
-      working-directory: ./azure-devops
+      working-directory: ./devops-azure
     
     - name: Npm test
       run : npm test
-      working-directory: ./azure-devops
+      working-directory: ./devops-azure
 
     - name: docker login
       run : echo ${{secrets.docker_password}} | docker login -u ${{secrets.docker_username}} --password-stdin
@@ -34,7 +34,7 @@ jobs:
 
     - name: Docker build 
       run : docker build -t ${{secrets.docker_username}}/devops-azure:$TAG .
-      working-directory: ./azure-devops
+      working-directory: ./devops-azure
 
     - name: Docker Push
       run : docker push ${{secrets.docker_username}}/devops-azure:$TAG
