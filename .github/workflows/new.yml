@@ -27,17 +27,17 @@ jobs:
       working-directory: ./devops-azure
 
     - name: docker login
-      run : echo ${{secrets.docker_password}} | docker login -u ${{secrets.docker_username}} --password-stdin
+      run : echo ${{secrets.DOCKER_PASSWORD}} | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
 
     - name: Docker Image Tag
       run : echo "TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
     - name: Docker build 
-      run : docker build -t ${{secrets.docker_username}}/devops-azure:$TAG .
+      run : docker build -t ${{secrets.DOCKER_USERNAME}}/devops-azure:$TAG .
       working-directory: ./devops-azure
 
     - name: Docker Push
-      run : docker push ${{secrets.docker_username}}/devops-azure:$TAG
+      run : docker push ${{secrets.DOCKER_USERNAME}}/devops-azure:$TAG
 
 
         
