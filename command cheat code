@@ -52,3 +52,30 @@ error faced - error: lost connection to pod
 # reference 
 
 https://www.perfectscale.io/blog/kubectl-cheat-sheet
+
+
+## Error Faced 
+
+> git push origin main:main
+remote: error: Trace: 8035f2721abb527dfe4b023ab9698fa18aceb76a18928d9a5351c9a1ee0a331b        
+remote: error: See https://gh.io/lfs for more information.        
+remote: error: File terraform/.terraform/providers/registry.terraform.io/hashicorp/azurerm/4.57.0/linux_amd64/terraform-provider-azurerm_v4.57.0_x5 is 223.13 MB; this exceeds GitHub's file size limit of 100.00 MB        
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To https://github.com/bishalparikhh/Devops_Project_Azure
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/bishalparikhh/Devops_Project_Azure'
+
+solution  : 
+
+Step 1️⃣ Add .terraform/ to .gitignore
+
+At repo root, edit or create .gitignore and add:
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+.crash.log
+terraform.tfvars
+
+
