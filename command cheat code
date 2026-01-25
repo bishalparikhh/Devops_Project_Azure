@@ -1,0 +1,54 @@
+
+## to get credential and store it in kubectl 
+az aks get-credentials --resource-group Devops_Project --name  Devops_Project
+
+## to check all the nodes 
+
+kubectl get nodes
+
+## to check all the namespace
+
+kubectl  get namespaces
+
+## to create namespace 
+
+kubectl create namespace argocd
+
+## to edit namespace 
+
+kubectl edit namespace argocd 
+
+
+## ADD argo repo using helm 
+
+helm repo add argo https://argoproj.github.io/argo-helm
+
+## Updating Helm repo 
+
+helm repo update
+
+
+
+
+# to install helm inside argocd namespace 
+
+
+helm install argocd       argo/argo-cd     -n   argocd
+             label Helm   Helm repository       namespace
+
+
+# watch pods 
+
+kubectl get pods -n argocd -w
+
+## Access Argo CD UI (simple way)
+
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+error faced - error: lost connection to pod
+
+
+
+# reference 
+
+https://www.perfectscale.io/blog/kubectl-cheat-sheet
