@@ -48,6 +48,10 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 error faced - error: lost connection to pod
 
 
+## Check the Service
+
+
+kubectl get svc -n demo
 
 # reference 
 
